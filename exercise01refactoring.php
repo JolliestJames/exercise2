@@ -1,10 +1,15 @@
 <?php
-class IceBoxRefrigerator {
+
+interface Refrigerator {
+  public function add($beverage);
+}
+
+class IceBoxRefrigerator implements Refrigerator{
     public $height, $width, $depth;
     public function add($beverage) { }
 }
 
-class BrokenRefrigerator {
+class BrokenRefrigerator implements Refrigerator{
     public $height, $width, $depth;
     public function add($beverage) { }
 }
@@ -22,8 +27,8 @@ class Kitchen {
         $this->refrigerator = new IceBoxRefrigerator();
     }
 
-    public function addBeverageToRefrigerator() {
-        $this->refrigerator->add( new Beverage() );
+    public function addBeverageToRefrigerator(Beverage $beverage) {
+        $this->refrigerator->add( $beverage );
     }
 
     public function __toString() {
@@ -37,7 +42,7 @@ class Kitchen {
 // Current usage example:
 
 $kitchen = new Kitchen();
-$kitchen->addBeerToRefrigerator();
+$kitchen->addBeverageToRefrigerator(new RootBeer());
 echo (string)$kitchen;
 
 // $kitchen has an IceBoxRefrigerator with a RootBeer in it.
