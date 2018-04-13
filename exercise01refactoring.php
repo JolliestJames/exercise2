@@ -9,8 +9,10 @@ class BrokenRefrigerator {
     public function add($beverage) { }
 }
 
-class RootBeer { }
-class Kombucha { }
+interface Beverage {}
+
+class RootBeer implements Beverage { }
+class Kombucha implements Beverage { }
 
 class Kitchen {
 
