@@ -22,8 +22,8 @@ class Kitchen {
         $this->refrigerator = new IceBoxRefrigerator();
     }
 
-    public function addBeerToRefrigerator() {
-        $this->refrigerator->add( new RootBeer() );
+    public function addBeverageToRefrigerator() {
+        $this->refrigerator->add( new Beverage() );
     }
 
     public function __toString() {
