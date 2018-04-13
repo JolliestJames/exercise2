@@ -23,8 +23,8 @@ class Kitchen {
 
     private $refrigerator;
 
-    public function __construct() {
-        $this->refrigerator = new IceBoxRefrigerator();
+    public function __construct(Refrigerator $refrigerator) {
+        $this->refrigerator = $refrigerator;
     }
 
     public function addBeverageToRefrigerator(Beverage $beverage) {
@@ -41,7 +41,7 @@ class Kitchen {
 
 // Current usage example:
 
-$kitchen = new Kitchen();
+$kitchen = new Kitchen(new IceBoxRefrigerator());
 $kitchen->addBeverageToRefrigerator(new RootBeer());
 echo (string)$kitchen;
 
@@ -51,6 +51,5 @@ echo (string)$kitchen;
 //          add any beverage other than beer.
 
 // Goal: Create a kitchen with a BrokenRefrigerator, and add Kombucha to it.
-
 ?>
 
