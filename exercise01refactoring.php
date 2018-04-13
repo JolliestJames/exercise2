@@ -51,5 +51,8 @@ echo (string)$kitchen;
 //          add any beverage other than beer.
 
 // Goal: Create a kitchen with a BrokenRefrigerator, and add Kombucha to it.
+$kitchenWithBrokenFridge = new Kitchen(new BrokenRefrigerator());
+$kitchenWithBrokenFridge->addBeverageToRefrigerator(new Kombucha());
+
 ?>
 
