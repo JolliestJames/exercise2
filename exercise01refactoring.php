@@ -46,9 +46,17 @@ class Kitchen {
       $this->refrigerator->add( $kombucha );
     }
 
+    public function calculateFridgeVolume() {
+      return $this->refrigerator->height * $this->refrigerator->width * $this->refrigerator->depth;
+    } 
+
+    public function calculateFridgeVolumeGallons($fridgeVolume) {
+      return $fridgeVolume * 7.48052;
+    }
+
     public function __toString() {
-        $fridgeVolume = ($this->refrigerator->height * $this->refrigerator->width * $this->refrigerator->depth);
-        $fridgeVolumeGallons = $fridgeVolume * 7.48052;
+        $fridgeVolume = $this->calculateFridgeVolume();
+        $fridgeVolumeGallons = $this->calculateFridgeVolumeGallons($fridgeVolume);
         return "Kitchen. Fridge volume = " . $fridgeVolumeGallons . " gallons";
     }
 
