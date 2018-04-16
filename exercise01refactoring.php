@@ -1,3 +1,6 @@
+<!-- James Martinez
+CS 362 - Exercise 2 -->
+
 <?php
 
 interface Refrigerator {
@@ -27,8 +30,20 @@ class Kitchen {
         $this->refrigerator = $refrigerator;
     }
 
+    //we can just add any beverage
+
     public function addBeverageToRefrigerator(Beverage $beverage) {
         $this->refrigerator->add( $beverage );
+    }
+
+    //or be more specific
+
+    public function addBeerToRefrigerator(RootBeer $rootbeer) {
+      $this->refrigerator->add( $rootbeer );
+    }
+
+    public function addKombuchaToRefrigerator(Kombucha $kombucha) {
+      $this->refrigerator->add( $kombucha );
     }
 
     public function __toString() {
@@ -42,7 +57,7 @@ class Kitchen {
 // Current usage example:
 
 $kitchen = new Kitchen(new IceBoxRefrigerator());
-$kitchen->addBeverageToRefrigerator(new RootBeer());
+$kitchen->addBeerToRefrigerator(new RootBeer());
 echo (string)$kitchen;
 
 // $kitchen has an IceBoxRefrigerator with a RootBeer in it.
@@ -51,8 +66,11 @@ echo (string)$kitchen;
 //          add any beverage other than beer.
 
 // Goal: Create a kitchen with a BrokenRefrigerator, and add Kombucha to it.
-$kitchenWithBrokenFridge = new Kitchen(new BrokenRefrigerator());
-$kitchenWithBrokenFridge->addBeverageToRefrigerator(new Kombucha());
+$kitchenWithBrokenFridge1 = new Kitchen(new BrokenRefrigerator());
+$kitchenWithBrokenFridge1->addKombuchaToRefrigerator(new Kombucha());
+
+$kitchenWithBrokenFridge2 = new Kitchen(new BrokenRefrigerator());
+$kitchenWithBrokenFridge2->addBeverageToRefrigerator(new Kombucha());
 
 ?>
 
